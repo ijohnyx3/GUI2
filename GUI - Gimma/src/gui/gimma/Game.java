@@ -16,6 +16,7 @@ import javax.swing.border.Border;
 /**
  *
  * @author Yi-hong
+ * en Calvin
  */
 public class Game {
     
@@ -920,6 +921,8 @@ public class Game {
             @Override
             public void run() {
                 new Game();
+                
+             
             }
         });
         
