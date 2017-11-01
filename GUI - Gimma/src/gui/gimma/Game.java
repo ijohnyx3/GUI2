@@ -169,12 +169,7 @@ public class Game {
             
         //Section starting the code for the prologue of the story 
         panel.add(prologue, "prologue");
-<<<<<<< HEAD
-                
-        
-=======
 
->>>>>>> bd8682f7fe73cbbd4d167e252ffb66a056b330e6
         
         //Scrollpane with text
                 c.gridx = 0;
@@ -267,27 +262,8 @@ public class Game {
             first.add(statscroll, c);
                 statscroll.setViewportView(stats);
                 
-<<<<<<< HEAD
                 setText(stats, border);
-=======
-                stats.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                stats.setEditable(false);
-                stats.setEnabled(true);
-                stats.setWrapStyleWord(true);
-                stats.setLineWrap(true);
-                stats.setText(  "Stats: \n"
-                        +       " Sta:  lvl 1 \n"
-                        +       " Str:  lvl 1 \n"
-                        +       " Int:  lvl 1 \n"
-                        +       " Agi:  lvl 1 \n"
-                        +       " Luk:  lvl 1 \n"
-                        +       "     \n\n"
-                        +       "Items: \n"
-                        +       " None");
->>>>>>> bd8682f7fe73cbbd4d167e252ffb66a056b330e6
+
 
                         
         //Family button
@@ -474,27 +450,11 @@ public class Game {
             Villagers.add(statscroll3, c);
                 statscroll3.setViewportView(stats3);
                 
-<<<<<<< HEAD
+
                 setText(stats3, border);
-=======
-                stats3.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                stats3.setEditable(false);
-                stats3.setEnabled(true);
-                stats3.setWrapStyleWord(true);
-                stats3.setLineWrap(true);
-                stats3.setText(  "Stats: \n"
-                        +       " Sta:  lvl 1 \n"
-                        +       " Str:  lvl 1 \n"
-                        +       " Int:  lvl 1 \n"
-                        +       " Agi:  lvl 1 \n"
-                        +       " Luk:  lvl 1 \n"
-                        +       "     \n\n"
-                        +       "Items: \n"
-                        +       " None\n\n");
->>>>>>> bd8682f7fe73cbbd4d167e252ffb66a056b330e6
+
+                
+
 
                 
         //Button to continue to the next part with the choice Villagers        
@@ -554,27 +514,11 @@ public class Game {
             Guards.add(statscroll4, c);
                 statscroll4.setViewportView(stats4);
                 
-<<<<<<< HEAD
+
                 setText(stats4, border);
-=======
-                stats4.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                stats4.setEditable(false);
-                stats4.setEnabled(true);
-                stats4.setWrapStyleWord(true);
-                stats4.setLineWrap(true);
-                stats4.setText(  "Stats: \n"
-                        +       " Sta:  lvl 1 \n"
-                        +       " Str:  lvl 1 \n"
-                        +       " Int:  lvl 1 \n"
-                        +       " Agi:  lvl 1 \n"
-                        +       " Luk:  lvl 1 \n"
-                        +       "     \n\n"
-                        +       "Items: \n"
-                        +       " None\n\n");
->>>>>>> bd8682f7fe73cbbd4d167e252ffb66a056b330e6
+
+                
+
 
                 
         //Button to continue to the next part with the choice Guards        
@@ -634,27 +578,11 @@ public class Game {
             Nobody.add(statscroll5, c);
                 statscroll5.setViewportView(stats5);
                 
-<<<<<<< HEAD
+
                 setText(stats5, border);
-=======
-                stats5.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                stats5.setEditable(false);
-                stats5.setEnabled(true);
-                stats5.setWrapStyleWord(true);
-                stats5.setLineWrap(true);
-                stats5.setText(  "Stats: \n"
-                        +       " Sta:  lvl 1 \n"
-                        +       " Str:  lvl 1 \n"
-                        +       " Int:  lvl 1 \n"
-                        +       " Agi:  lvl 1 \n"
-                        +       " Luk:  lvl 1 \n"
-                        +       "     \n\n"
-                        +       "Items: \n"
-                        +       " None\n\n");
->>>>>>> bd8682f7fe73cbbd4d167e252ffb66a056b330e6
+
+                
+
 
                 
         //Button to continue to the next part with the choice Nobody
@@ -867,27 +795,10 @@ public class Game {
             third.add(statscroll7, c);
                 statscroll7.setViewportView(stats7);
                 
-<<<<<<< HEAD
+
                 setText(stats7, border);
-=======
-                stats7.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                stats7.setEditable(false);
-                stats7.setEnabled(true);
-                stats7.setWrapStyleWord(true);
-                stats7.setLineWrap(true);
-                stats7.setText(  "Stats: \n"
-                        +       " Sta:  lvl 1 \n"
-                        +       " Str:  lvl 1 \n"
-                        +       " Int:  lvl 1 \n"
-                        +       " Agi:  lvl 1 \n"
-                        +       " Luk:  lvl 1 \n"
-                        +       "     \n\n"
-                        +       "Items: \n"
-                        +       " None\n\n");
->>>>>>> bd8682f7fe73cbbd4d167e252ffb66a056b330e6
+
+               
                 
                 
                 //choice 2     
@@ -939,13 +850,13 @@ public class Game {
                         +       " Luk:  lvl 1 \n"
                         +       "     \n\n"
                         +       "Items: \n"
-<<<<<<< HEAD
-                        +       " Niggys magic flute\n\n");
-=======
+
+                        +       " Niggys magic flute\n\n"
+
                         +       " Nonee\n\n");
                 
 
->>>>>>> bd8682f7fe73cbbd4d167e252ffb66a056b330e6
+
     }
     
     
