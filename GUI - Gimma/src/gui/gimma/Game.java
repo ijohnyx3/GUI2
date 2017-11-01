@@ -38,15 +38,27 @@ public class Game {
     JTextField input        = new JTextField();
     JButton submit          = new JButton("submit");   
     
+    JPanel tutorial         = new JPanel();
+    JScrollPane scrollt     = new JScrollPane();
+    JTextArea textt         = new JTextArea();
+    JScrollPane statscrollt = new JScrollPane();
+    JTextArea statst        = new JTextArea();
+    JButton family          = new JButton ("Family");
+    JButton villagers       = new JButton ("Some Villagers");
+    JButton guards          = new JButton ("Local Guards");
+    JButton nobody          = new JButton ("Nobody...");
+
+    
     JPanel first            = new JPanel();
     JScrollPane scroll2     = new JScrollPane();
     JTextArea text2         = new JTextArea();
     JScrollPane statscroll  = new JScrollPane();
     JTextArea stats         = new JTextArea();
-    JButton family          = new JButton ("Family");
-    JButton villagers       = new JButton ("Some Villagers");
-    JButton guards          = new JButton ("Local Guards");
-    JButton nobody          = new JButton ("Nobody...");
+    JButton elder           = new JButton ("Ask the village head");
+    JButton grandfather     = new JButton ("Ask your grandfather");
+    JButton search          = new JButton ("Search through town documents");
+    JButton forget          = new JButton ("Forget about that pig-man, today is the festival!");
+    
     
     JPanel Family           = new JPanel();
     JScrollPane statscroll2 = new JScrollPane();
@@ -110,11 +122,13 @@ public class Game {
             frame.setLocationRelativeTo(null);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
         
+        Border border = BorderFactory.createLineBorder(Color.BLACK);
         
         intro.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
         prologue.setLayout(new GridBagLayout());
+        tutorial.setLayout(new GridBagLayout());
         first.setLayout(new GridBagLayout());
         Family.setLayout(new GridBagLayout());
         Villagers.setLayout(new GridBagLayout());
@@ -140,12 +154,9 @@ public class Game {
                 c.insets = new Insets(600,0,0,100);
             intro.add(start, c);
                      
-            start.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    cl.show(panel, "prologue");        
-                }
-            }); 
+            start.addActionListener((ActionEvent e) -> {
+                cl.show(panel, "prologue");
+        }); 
              
             
         //Exit button    
@@ -155,13 +166,9 @@ public class Game {
                 c.insets = new Insets(600,100,0,0);
             intro.add(exit, c);
                   
-            exit.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    System.exit(0);
-                    cl.show(panel, "intro");
-                }
-            });
+            exit.addActionListener((ActionEvent e) -> {
+                System.exit(0);
+        });
 
             
             
@@ -176,21 +183,11 @@ public class Game {
                 c.ipadx = 750;
                 c.ipady = 450;
                 c.insets = new Insets(0,0,215,485); 
-                
             prologue.add(scroll, c);
                 scroll.setViewportView(text);
-                
-                Border border = BorderFactory.createLineBorder(Color.BLACK);
-                text.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                text.setEditable(false);
-                text.setEnabled(true);
-                text.setWrapStyleWord(true);
-                text.setLineWrap(true);
-   
-                
+                Text(text, border);
+         
+            
         //Input text field
                 c.ipadx = 275;
                 c.ipady = 10;
@@ -204,32 +201,126 @@ public class Game {
                 c.insets = new Insets(425,0,0,1140);                 
             prologue.add(submit, c);
             
-            submit.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
+            submit.addActionListener((ActionEvent e) -> {
+                if (input.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Please enter a valid name.");
                     
-                    if (input.getText().equals("")){
-                        JOptionPane.showMessageDialog(null, "Please enter a valid name.");
-                        return;
-                    } else {
+                } else {
                     
-                        String name = "You are a simple villager named " + input.getText() + "."
-                        + "You live in Takitiko village, a simple farm village .\n" 
-                        + "The last couple of nights you’ve had disturbing dreams where your village was left in ruins.\n"
-                        + "There was one reoccuring thing in every single dream you had, a big "
-                        + "humanoid-pig hybrid riding away on a black horse\n"
-                        + "You decided to talk to ...... about these abnormal dreams.'\n \n"
-                        + "<Choose an option on the right side of the textscreen to fill in the ... in the sentence.>'\n\n\n";
-                        
-                        text.setText(name);
-                        text2.append(text.getText()); 
-                        cl.show(panel, "first");
-                        
-                    }
+                    String name = "You are a simple villager named " + input.getText() + "."
+                            + "You live in Takitiko village, a simple farm village .\n"
+                            + "The last couple of nights you’ve had disturbing dreams where your village was left in ruins.\n"
+                            + "There was one reoccuring thing in every single dream you had, a big "
+                            + "humanoid-pig hybrid riding away on a black horse\n"
+                            + "You decided to talk to ...... about these abnormal dreams.'\n \n"
+                            + "<Choose an option on the right side of the textscreen to fill in the ... in the sentence.>'\n\n";
+                    
+                    text.setText(name);
+                    textt.append(text.getText());
+                    cl.show(panel, "tutorial");
+                    
                 }
-            });
+        });
             
             
+            
+            
+            
+            
+        //Section starting the code for the first choice ofthe story     
+        panel.add(tutorial, "tutorial");
+        
+
+        //Scrollpane2 with text2    
+                c.ipadx = 750;
+                c.ipady = 450;
+                c.insets = new Insets(0,0,215,485); 
+            tutorial.add(scrollt, c);
+                scrollt.setViewportView(textt);
+                Text(textt, border);
+                
+                
+        //Scrollpane of the stats with the stats displayed
+                c.ipadx = 150;
+                c.ipady = 190;
+                c.insets = new Insets(485,0,0,1085); 
+            tutorial.add(statscrollt, c);
+                statscrollt.setViewportView(statst);
+                setText(statst, border);
+                statst.setText(  "Stats: \n"
+                        +       "Sta:  lvl 1 \n"
+                        +       "Str:  lvl 1 \n"
+                        +       "Int:  lvl 1 \n"
+                        +       "Agi:  lvl 1 \n"
+                        +       "Luk:  lvl 1 \n"
+                        +       "     \n\n"
+                        +       "Items: \n"
+                        +       " None");
+
+                        
+        //Family button
+                c.ipadx = 155;
+                c.ipady = 40;
+                c.insets = new Insets(0,850,550,0); 
+                family.setToolTipText("Telling your family is safe! right?");
+            tutorial.add(family, c);
+            
+            family.addActionListener((ActionEvent e) -> {
+                textt.append("<Choices you make have consequences and may possibly change the outcome of the game>\n\n");
+                text2.append(textt.getText());
+                stats.append(statst.getText());
+                cl.show(panel, "first");
+        });
+            
+            
+        //Villagers button   
+                c.ipadx = 105;
+                c.ipady = 40;
+                c.insets = new Insets(0,850,360,0); 
+                villagers.setToolTipText("I hope they won't think I am crazy....");
+            tutorial.add(villagers, c);
+            
+            villagers.addActionListener((ActionEvent e) -> {
+                textt.append("<Choices you make have consequences and may possibly change the outcome of the game>\n\n");
+                text2.append(textt.getText());
+                stats.append(statst.getText());
+                cl.show(panel, "first");
+        });
+        
+            
+        //Guards button
+                c.ipadx = 115;
+                c.ipady = 40;
+                c.insets = new Insets(0,850,170,0); 
+                guards.setToolTipText("I must warn them before it is too late ! ");
+            tutorial.add(guards, c);
+            
+            guards.addActionListener((ActionEvent e) -> {
+                textt.append("<Choices you make have consequences and may possibly change the outcome of the game>\n\n");
+                text2.append(textt.getText());
+                stats.append(statst.getText());
+                cl.show(panel, "first");
+        });
+        
+            
+        //Nobody button    
+                c.ipadx = 140;
+                c.ipady = 40;
+                c.insets = new Insets(20,850,0,0); 
+                nobody.setToolTipText("It is nothing you can't handel !");
+            tutorial.add(nobody, c);
+            
+            nobody.addActionListener((ActionEvent e) -> {
+                textt.append("<Choices you make have consequences and may possibly change the outcome of the game>\n\n"
+                        + "You wake up in the morning after another disturbing dream. You think it might be a good idea to"
+                        + " get more information about the pig-man. Tonight is the harvest festival, to celebrate the big harvest of tomorrow. \n" 
+                        + "What do you do?"
+                );
+                text2.append(textt.getText());
+                stats.append(statst.getText());
+                cl.show(panel, "first");
+        });
+        
             
             
             
@@ -244,15 +335,7 @@ public class Game {
                 c.insets = new Insets(0,0,215,485); 
             first.add(scroll2, c);
                 scroll2.setViewportView(text2);
-                
-                text2.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                text2.setEditable(false);
-                text2.setEnabled(true);
-                text2.setWrapStyleWord(true);
-                text2.setLineWrap(true);
+                Text(text2, border);
                 
                 
         //Scrollpane of the stats with the stats displayed
@@ -261,90 +344,68 @@ public class Game {
                 c.insets = new Insets(485,0,0,1085); 
             first.add(statscroll, c);
                 statscroll.setViewportView(stats);
-                
                 setText(stats, border);
 
 
                         
-        //Family button
-                c.ipadx = 155;
+        //Elder button
+                c.ipadx = 160;
                 c.ipady = 40;
                 c.insets = new Insets(0,850,550,0); 
                 family.setToolTipText("Telling your family is safe! right?");
-            first.add(family, c);
+            first.add(elder, c);
             
-            family.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                        text2.append(
-                          "You decided to talk to your family, you explained your dreams and told your mother that "
-                        + "you were afraid it would become reality. Your mother however reassured you that the dream"
-                        + "could not become reality.\n"
-                        + "You however did believe the dream, it felt too real to be a dream. The creeping and burning "
-                        + "sensation after you woke up could not be reproduced by a regular dream.\n\n\n"
-                        );
-                        
-                        text3.append(text2.getText()); 
-                        cl.show(panel, "Family");
-                        
-                        JOptionPane.showMessageDialog(null, "Your Int has increased by 1 lvl!", "stat-up!", JOptionPane.INFORMATION_MESSAGE);
-                    }
-            });
+            elder.addActionListener((ActionEvent e) -> {
+                
+                
+                
+                text3.append(text2.getText());
+                cl.show(panel, "Family");
+            // JOptionPane.showMessageDialog(null, "Your Int has increased by 1 lvl!", "stat-up!", JOptionPane.INFORMATION_MESSAGE);
+        });
             
             
-        //Villagers button   
-                c.ipadx = 105;
+        //Grandfather button   
+                c.ipadx = 150;
                 c.ipady = 40;
                 c.insets = new Insets(0,850,360,0); 
-                villagers.setToolTipText("I hope they won't think I am crazy....");
-            first.add(villagers, c);
+                grandfather.setToolTipText("I hope they won't think I am crazy....");
+            first.add(grandfather, c);
             
-            villagers.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-
-                        text4.append(text2.getText()); 
-                        cl.show(panel, "Villagers");
-                    }
-            });
+            grandfather.addActionListener((ActionEvent e) -> {
+                text4.append(text2.getText());
+                cl.show(panel, "Villagers");
+        });
         
             
-        //Guards button
-                c.ipadx = 115;
+        //Search button
+                c.ipadx = 85;
                 c.ipady = 40;
                 c.insets = new Insets(0,850,170,0); 
-                guards.setToolTipText("I must warn them before it is too late ! ");
-            first.add(guards, c);
+                search.setToolTipText("I must warn them before it is too late ! ");
+            first.add(search, c);
             
-            guards.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-
-                        text5.append(text2.getText()); 
-                        cl.show(panel, "Guards");
-                    }
-            });
+            search.addActionListener((ActionEvent e) -> {
+                text5.append(text2.getText());
+                cl.show(panel, "Guards");
+        });
         
             
-        //Nobody button    
-                c.ipadx = 140;
+        //Forget button    
+                c.ipadx = 5;
                 c.ipady = 40;
                 c.insets = new Insets(20,850,0,0); 
-                nobody.setToolTipText("It is nothing you can't handel !");
-            first.add(nobody, c);
+                forget.setToolTipText("It is nothing you can't handel !");
+            first.add(forget, c);
             
-            nobody.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-
-                        text6.append(text2.getText()); 
-                        cl.show(panel, "Nobody");
-                    }
-            });
+            forget.addActionListener((ActionEvent e) -> {
+                text6.append(text2.getText());
+                cl.show(panel, "Nobody");
+        });
         
             
             
-            
+        
             
         //Section starting the code after the choice Family     
         panel.add(Family, "Family");
@@ -356,16 +417,7 @@ public class Game {
                 c.insets = new Insets(0,0,215,485); 
             Family.add(scroll3, c);
                 scroll3.setViewportView(text3);
-                
-                text3.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                text3.setEditable(false);
-                text3.setEnabled(true);
-                text3.setWrapStyleWord(true);
-                text3.setLineWrap(true);
-                
+                Text(text3, border);
                 
         //Scrollpane2 of the stats with updated stats displayed
                 c.ipadx = 150;
@@ -373,15 +425,7 @@ public class Game {
                 c.insets = new Insets(485,0,0,1085); 
             Family.add(statscroll2, c);
                 statscroll2.setViewportView(stats2);
-                
-                stats2.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                stats2.setEditable(false);
-                stats2.setEnabled(true);
-                stats2.setWrapStyleWord(true);
-                stats2.setLineWrap(true);
+                setText(stats, border);
                 stats2.setText(  "Stats: \n"
                         +       " Sta:  lvl 1 \n"
                         +       " Str:  lvl 1 \n"
@@ -399,24 +443,20 @@ public class Game {
                 c.insets = new Insets(0,850,170,0); 
             Family.add(next, c);
             
-            next.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    
-                        text3.append(
-                            "It’s getting late, and the opening of the festival is starting soon. As you walk in the "
-                            + "streets you get an intense headache, and it feels like there is something dark and foul close to you.  "
-                            + "When you’re walking through an alley you drop to the ground. You start seeing "
-                            + "horrible visions of the festival and the people there, all dead or even worse. Then the images go up in"
-                            + " flames and you find yourself in a dark empty space filled with flames\n\n" 
-                            + "Then you hear a deep voice say: “Your village’s punishment is near, you will regret the day you all betrayed Ragnor Bloodworth!”\n\n\n"
-                        );
-                        
-                        text7.append(text3.getText()); 
-                        stats6.setText(stats2.getText());
-                        cl.show(panel, "second");
-                    }
-            });
+            next.addActionListener((ActionEvent e) -> {
+                text3.append(
+                        "It’s getting late, and the opening of the festival is starting soon. As you walk in the "
+                                + "streets you get an intense headache, and it feels like there is something dark and foul close to you.  "
+                                + "When you’re walking through an alley you drop to the ground. You start seeing "
+                                + "horrible visions of the festival and the people there, all dead or even worse. Then the images go up in"
+                                + " flames and you find yourself in a dark empty space filled with flames\n\n"
+                                + "Then you hear a deep voice say: “Your village’s punishment is near, you will regret the day you all betrayed Ragnor Bloodworth!”\n\n\n"
+                );
+                
+                text7.append(text3.getText());
+                stats6.setText(stats2.getText());
+                cl.show(panel, "second");
+        });
             
             
             
@@ -432,15 +472,8 @@ public class Game {
                 c.insets = new Insets(0,0,215,485); 
             Villagers.add(scroll4, c);
                 scroll4.setViewportView(text4);
-                
-                text4.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                text4.setEditable(false);
-                text4.setEnabled(true);
-                text4.setWrapStyleWord(true);
-                text4.setLineWrap(true);
+            
+                Text(text4, border);
                 
                 
         //Scrollpane3 of the stats with updated stats displayed
@@ -449,38 +482,29 @@ public class Game {
                 c.insets = new Insets(485,0,0,1085); 
             Villagers.add(statscroll3, c);
                 statscroll3.setViewportView(stats3);
-                
-
                 setText(stats3, border);
 
-                
-
-
-                
+      
         //Button to continue to the next part with the choice Villagers        
                 c.ipadx = 115;
                 c.ipady = 40;
                 c.insets = new Insets(0,850,170,0); 
             Villagers.add(next2, c);
             
-            next2.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    
-                        text4.append(
-                            "\nIt’s getting late, and the opening of the festival is starting soon. As you walk in the "
-                            + "streets you get an intense headache, and it feels like there is something dark and foul close to you.  "
-                            + "When you’re walking through an alley you drop to the ground. You start seeing "
-                            + "horrible visions of the festival and the people there, all dead or even worse. Then the images go up in"
-                            + " flames and you find yourself in a dark empty space filled with flames\n\n" 
-                            + "Then you hear a deep voice say: “Your village’s punishment is near, you will regret the day you all betrayed Ragnor Bloodworth!”"
-                        );
-                        
-                        text7.append(text4.getText()); 
-                        stats6.setText(stats3.getText());
-                        cl.show(panel, "second");
-                    }
-            });
+            next2.addActionListener((ActionEvent e) -> {
+                text4.append(
+                        "\nIt’s getting late, and the opening of the festival is starting soon. As you walk in the "
+                                + "streets you get an intense headache, and it feels like there is something dark and foul close to you.  "
+                                + "When you’re walking through an alley you drop to the ground. You start seeing "
+                                + "horrible visions of the festival and the people there, all dead or even worse. Then the images go up in"
+                                + " flames and you find yourself in a dark empty space filled with flames\n\n"
+                                + "Then you hear a deep voice say: “Your village’s punishment is near, you will regret the day you all betrayed Ragnor Bloodworth!”"
+                );
+                
+                text7.append(text4.getText());
+                stats6.setText(stats3.getText());
+                cl.show(panel, "second");
+        });
         
             
             
@@ -497,14 +521,7 @@ public class Game {
             Guards.add(scroll5, c);
                 scroll5.setViewportView(text5);
                 
-                text5.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                text5.setEditable(false);
-                text5.setEnabled(true);
-                text5.setWrapStyleWord(true);
-                text5.setLineWrap(true);
+            Text(text5, border);
                 
                 
         //Scrollpane4 of the stats with updated stats displayed
@@ -518,33 +535,26 @@ public class Game {
                 setText(stats4, border);
 
                 
-
-
-                
         //Button to continue to the next part with the choice Guards        
                 c.ipadx = 115;
                 c.ipady = 40;
                 c.insets = new Insets(0,850,170,0); 
             Guards.add(next3, c);
             
-            next3.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    
-                        text5.append(
-                            "\nIt’s getting late, and the opening of the festival is starting soon. As you walk in the "
-                            + "streets you get an intense headache, and it feels like there is something dark and foul close to you.  "
-                            + "When you’re walking through an alley you drop to the ground. You start seeing "
-                            + "horrible visions of the festival and the people there, all dead or even worse. Then the images go up in"
-                            + " flames and you find yourself in a dark empty space filled with flames\n\n" 
-                            + "Then you hear a deep voice say: “Your village’s punishment is near, you will regret the day you all betrayed Ragnor Bloodworth!”"
-                        );
-                        
-                        text7.append(text5.getText()); 
-                        stats6.setText(stats4.getText());
-                        cl.show(panel, "second");
-                    }
-            });
+            next3.addActionListener((ActionEvent e) -> {
+                text5.append(
+                        "\nIt’s getting late, and the opening of the festival is starting soon. As you walk in the "
+                                + "streets you get an intense headache, and it feels like there is something dark and foul close to you.  "
+                                + "When you’re walking through an alley you drop to the ground. You start seeing "
+                                + "horrible visions of the festival and the people there, all dead or even worse. Then the images go up in"
+                                + " flames and you find yourself in a dark empty space filled with flames\n\n"
+                                + "Then you hear a deep voice say: “Your village’s punishment is near, you will regret the day you all betrayed Ragnor Bloodworth!”" 
+                );
+                
+                text7.append(text5.getText());
+                stats6.setText(stats4.getText());
+                cl.show(panel, "second");
+        });
 
             
             
@@ -561,15 +571,7 @@ public class Game {
             Nobody.add(scroll6, c);
                 scroll6.setViewportView(text6);
                 
-                text6.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                text6.setEditable(false);
-                text6.setEnabled(true);
-                text6.setWrapStyleWord(true);
-                text6.setLineWrap(true);
-                
+                Text(text6, border);
                 
         //Scrollpane5 of the stats with updated stats displayed
                 c.ipadx = 150;
@@ -578,11 +580,7 @@ public class Game {
             Nobody.add(statscroll5, c);
                 statscroll5.setViewportView(stats5);
                 
-
                 setText(stats5, border);
-
-                
-
 
                 
         //Button to continue to the next part with the choice Nobody
@@ -591,24 +589,20 @@ public class Game {
                 c.insets = new Insets(0,850,170,0); 
             Nobody.add(next4, c);
             
-            next4.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    
-                        text6.append(
-                            "\nIt’s getting late, and the opening of the festival is starting soon. As you walk in the "
-                            + "streets you get an intense headache, and it feels like there is something dark and foul close to you.  "
-                            + "When you’re walking through an alley you drop to the ground. You start seeing "
-                            + "horrible visions of the festival and the people there, all dead or even worse. Then the images go up in"
-                            + " flames and you find yourself in a dark empty space filled with flames\n\n" 
-                            + "Then you hear a deep voice say: “Your village’s punishment is near, you will regret the day you all betrayed Ragnor Bloodworth!”"
-                        );
-                        
-                        text7.append(text6.getText()); 
-                        stats6.setText(stats5.getText());
-                        cl.show(panel, "second");
-                    }
-            });
+            next4.addActionListener((ActionEvent e) -> {
+                text6.append(
+                        "\nIt’s getting late, and the opening of the festival is starting soon. As you walk in the "
+                                + "streets you get an intense headache, and it feels like there is something dark and foul close to you.  "
+                                + "When you’re walking through an alley you drop to the ground. You start seeing "
+                                + "horrible visions of the festival and the people there, all dead or even worse. Then the images go up in"
+                                + " flames and you find yourself in a dark empty space filled with flames\n\n"
+                                + "Then you hear a deep voice say: “Your village’s punishment is near, you will regret the day you all betrayed Ragnor Bloodworth!”"
+                  );
+                
+                text7.append(text6.getText());
+                stats6.setText(stats5.getText());
+                cl.show(panel, "second");
+        });
             
             
             
@@ -623,18 +617,9 @@ public class Game {
                 c.ipady = 450;
                 c.insets = new Insets(0,0,215,485); 
             second.add(scroll7, c);
-                scroll7.setViewportView(text7);
+                scroll7.setViewportView(text7);        
                 
-                text7.setMargin(new Insets(10,10,10,10));
-                text7.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                text7.setEditable(false);
-                text7.setEnabled(true);
-                text7.setWrapStyleWord(true);
-                text7.setLineWrap(true);
-                
+                Text(text7, border);
                 
         //Scrollpane6 of the stats with updated stats displayed
                 c.ipadx = 150;
@@ -688,67 +673,9 @@ public class Game {
                 grudge.setToolTipText("What did the elders do, why is he telling ME all of this??!");
             second.add(grudge, c);
             
-            grudge.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                        text7.append(
-                            "\n\nHow dare you to speak to me like that! I will burn your whole village and everything that you love you insolent little piece of sh*t!\n" 
-                            + "The flames in the dark space rise high and from behind you a fire whip strikes your back as it heavily burns it. “All of you will pay for"
-                            + "what you’ve done to me, you will all tremble with fear when you see what happens soon!\n You wake up in the alley, your back hurts like crazy"
-                            + "and you feel the burn wound is still there.\n You think this is the proof you need to get the higher ups to believe you! You quickly head to the"
-                            + "village head and as you come into the room where some of the leaders are talking you scream: “Bloodworth is coming here anytime, and if you think"
-                            + "I’m crazy here is the proof!” You take off your shirt and show the burn mark. “And I’m going to stop him!”\n You see the village head whisper in "
-                            + "someone’s ear and he leaves the room. They ask you to explain it all and you do. They gather the troops and give you some as bodyguards. “We will "
-                            + "clear the festival area quickly before he’s here!” said the troop commander.\n You all make haste to the festival area and as soon as you arrive and"
-                            + " tell everyone to go into their homes for now a big flame portal opens on the stage and people scream and run in fear of this dark energy. A large "
-                            + "Pig-man in dark steel armor and a big Warhammer steps out, followed by some mean looking Hell-Pigs. He screams: “WHERE IS THAT OLD GEEZER, I WILL HAVE HIS HEAD TONIGHT!!!");
-                    
-                        text9.append(text7.getText());
-                        cl.show(panel, "fourth");
-                    }
-            });
-        
-            
-        //mercy button
-                c.ipadx = 75;
-                c.ipady = 40;
-                c.insets = new Insets(0,800,170,0); 
-                mercy.setToolTipText("I can't do anything... not for now at least...");
-            second.add(mercy, c);
-            
-            mercy.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                        text7.append(
-                            "\n\nHow dare you to speak to me like that! I will burn your whole village and everything that you love you insolent little piece of sh*t!\n" 
-                            + "The flames in the dark space rise high and from behind you a fire whip strikes your back as it heavily burns it. “All of you will pay for"
-                            + "what you’ve done to me, you will all tremble with fear when you see what happens soon!\n You wake up in the alley, your back hurts like crazy"
-                            + "and you feel the burn wound is still there.\n You think this is the proof you need to get the higher ups to believe you! You quickly head to the"
-                            + "village head and as you come into the room where some of the leaders are talking you scream: “Bloodworth is coming here anytime, and if you think"
-                            + "I’m crazy here is the proof!” You take off your shirt and show the burn mark. “And I’m going to stop him!”\n You see the village head whisper in "
-                            + "someone’s ear and he leaves the room. They ask you to explain it all and you do. They gather the troops and give you some as bodyguards. “We will "
-                            + "clear the festival area quickly before he’s here!” said the troop commander.\n You all make haste to the festival area and as soon as you arrive and"
-                            + " tell everyone to go into their homes for now a big flame portal opens on the stage and people scream and run in fear of this dark energy. A large "
-                            + "Pig-man in dark steel armor and a big Warhammer steps out, followed by some mean looking Hell-Pigs. He screams: “WHERE IS THAT OLD GEEZER, I WILL HAVE HIS HEAD TONIGHT!!!");
-                    
-                        text9.append(text7.getText());
-                        cl.show(panel, "fourth");
-                    }
-            });
-        
-            
-        //stoopid button
-                c.ipadx = 5;
-                c.ipady = 40;
-                c.insets = new Insets(20,800,0,0); 
-                stoopid.setToolTipText("Dat name tho, LMAO");
-            second.add(stoopid, c);
-            
-            stoopid.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                        text7.append(
-                                "\n\nHow dare you to speak to me like that! I will burn your whole village and everything that you love you insolent little piece of sh*t!\n" 
+            grudge.addActionListener((ActionEvent e) -> {
+                text7.append(
+                        "\n\nHow dare you to speak to me like that! I will burn your whole village and everything that you love you insolent little piece of sh*t!\n"
                                 + "The flames in the dark space rise high and from behind you a fire whip strikes your back as it heavily burns it. “All of you will pay for"
                                 + "what you’ve done to me, you will all tremble with fear when you see what happens soon!\n You wake up in the alley, your back hurts like crazy"
                                 + "and you feel the burn wound is still there.\n You think this is the proof you need to get the higher ups to believe you! You quickly head to the"
@@ -758,11 +685,60 @@ public class Game {
                                 + "clear the festival area quickly before he’s here!” said the troop commander.\n You all make haste to the festival area and as soon as you arrive and"
                                 + " tell everyone to go into their homes for now a big flame portal opens on the stage and people scream and run in fear of this dark energy. A large "
                                 + "Pig-man in dark steel armor and a big Warhammer steps out, followed by some mean looking Hell-Pigs. He screams: “WHERE IS THAT OLD GEEZER, I WILL HAVE HIS HEAD TONIGHT!!!");
-                    
-                        text8.append(text7.getText());
-                        cl.show(panel, "third");
-                    }
-            });
+                
+                text9.append(text7.getText());
+                cl.show(panel, "fourth");
+        });
+        
+            
+        //mercy button
+                c.ipadx = 75;
+                c.ipady = 40;
+                c.insets = new Insets(0,800,170,0); 
+                mercy.setToolTipText("I can't do anything... not for now at least...");
+            second.add(mercy, c);
+            
+            mercy.addActionListener((ActionEvent e) -> {
+                text7.append(
+                        "\n\nHow dare you to speak to me like that! I will burn your whole village and everything that you love you insolent little piece of sh*t!\n"
+                                + "The flames in the dark space rise high and from behind you a fire whip strikes your back as it heavily burns it. “All of you will pay for"
+                                + "what you’ve done to me, you will all tremble with fear when you see what happens soon!\n You wake up in the alley, your back hurts like crazy"
+                                + "and you feel the burn wound is still there.\n You think this is the proof you need to get the higher ups to believe you! You quickly head to the"
+                                + "village head and as you come into the room where some of the leaders are talking you scream: “Bloodworth is coming here anytime, and if you think"
+                                + "I’m crazy here is the proof!” You take off your shirt and show the burn mark. “And I’m going to stop him!”\n You see the village head whisper in "
+                                + "someone’s ear and he leaves the room. They ask you to explain it all and you do. They gather the troops and give you some as bodyguards. “We will "
+                                + "clear the festival area quickly before he’s here!” said the troop commander.\n You all make haste to the festival area and as soon as you arrive and"
+                                + " tell everyone to go into their homes for now a big flame portal opens on the stage and people scream and run in fear of this dark energy. A large "
+                                + "Pig-man in dark steel armor and a big Warhammer steps out, followed by some mean looking Hell-Pigs. He screams: “WHERE IS THAT OLD GEEZER, I WILL HAVE HIS HEAD TONIGHT!!!");
+                
+                text9.append(text7.getText());
+                cl.show(panel, "fourth");
+        });
+        
+            
+        //stoopid button
+                c.ipadx = 5;
+                c.ipady = 40;
+                c.insets = new Insets(20,800,0,0); 
+                stoopid.setToolTipText("Dat name tho, LMAO");
+            second.add(stoopid, c);
+            
+            stoopid.addActionListener((ActionEvent e) -> {
+                text7.append(
+                        "\n\nHow dare you to speak to me like that! I will burn your whole village and everything that you love you insolent little piece of sh*t!\n" 
+                                + "The flames in the dark space rise high and from behind you a fire whip strikes your back as it heavily burns it. “All of you will pay for"
+                                + "what you’ve done to me, you will all tremble with fear when you see what happens soon!\n You wake up in the alley, your back hurts like crazy"
+                                + "and you feel the burn wound is still there.\n You think this is the proof you need to get the higher ups to believe you! You quickly head to the"
+                                + "village head and as you come into the room where some of the leaders are talking you scream: “Bloodworth is coming here anytime, and if you think"
+                                + "I’m crazy here is the proof!” You take off your shirt and show the burn mark. “And I’m going to stop him!”\n You see the village head whisper in "
+                                + "someone’s ear and he leaves the room. They ask you to explain it all and you do. They gather the troops and give you some as bodyguards. “We will "
+                                + "clear the festival area quickly before he’s here!” said the troop commander.\n You all make haste to the festival area and as soon as you arrive and"
+                                + " tell everyone to go into their homes for now a big flame portal opens on the stage and people scream and run in fear of this dark energy. A large "
+                                + "Pig-man in dark steel armor and a big Warhammer steps out, followed by some mean looking Hell-Pigs. He screams: “WHERE IS THAT OLD GEEZER, I WILL HAVE HIS HEAD TONIGHT!!!");
+                
+                text8.append(text7.getText());
+                cl.show(panel, "third");
+        });
                
             
             
@@ -777,16 +753,8 @@ public class Game {
                 c.insets = new Insets(0,0,215,485); 
             third.add(scroll8, c);
                 scroll8.setViewportView(text8);
-                
-                text8.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                text8.setEditable(false);
-                text8.setEnabled(true);
-                text8.setWrapStyleWord(true);
-                text8.setLineWrap(true);
-                
+                Text(text8, border);
+
                 
         //Scrollpane7 of the stats with updated stats displayed
                 c.ipadx = 150;
@@ -794,7 +762,6 @@ public class Game {
                 c.insets = new Insets(485,0,0,1085); 
             third.add(statscroll7, c);
                 statscroll7.setViewportView(stats7);
-                
 
                 setText(stats7, border);
 
@@ -810,16 +777,7 @@ public class Game {
                 c.insets = new Insets(0,0,215,485); 
             fourth.add(scroll9, c);
                 scroll9.setViewportView(text9);
-                
-                text9.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                text9.setEditable(false);
-                text9.setEnabled(true);
-                text9.setWrapStyleWord(true);
-                text9.setLineWrap(true);
-
+                Text(text9, border);
                 
         //Scrollpane3 of the stats with updated stats displayed
                 c.ipadx = 150;
@@ -833,40 +791,42 @@ public class Game {
 
     }
     
-    public void setText(JTextArea stat,Border border){
-        stat.setBorder(
+    public void setText(JTextArea stats, Border border){
+                stats.setBorder(
                         BorderFactory.createCompoundBorder(
                             border,
                             BorderFactory.createEmptyBorder(5,5,5,5)));
-                stat.setEditable(false);
-                stat.setEnabled(true);
-                stat.setWrapStyleWord(true);
-                stat.setLineWrap(true);
-                stat.setText(  "Stats: \n"
-                        +       " Sta:  lvl 1 \n"
-                        +       " Str:  lvl 1 \n"
-                        +       " Int:  lvl 1 \n"
-                        +       " Agi:  lvl 1 \n"
-                        +       " Luk:  lvl 1 \n"
-                        +       "     \n\n"
-                        +       "Items: \n"
-
-                        +       " Niggys magic flute\n\n"
-
-                        +       " Nonee\n\n");
-                
+                stats.setEditable(false);
+                stats.setEnabled(true);
+                stats.setWrapStyleWord(true);
+                stats.setLineWrap(true);
 
 
     }
     
+    /**
+     *
+     * @param text
+     * @param border2
+     */
+    public void Text(JTextArea text, Border border2){
+                text.setBorder(
+                        BorderFactory.createCompoundBorder(
+                            border2,
+                            BorderFactory.createEmptyBorder(5,5,5,5)));
+                text.setEditable(false);
+                text.setEnabled(true);
+                text.setWrapStyleWord(true);
+                text.setLineWrap(true);
+   
+    }
+    
     
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable(){
+        SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new Game();
-                
-             
             }
         });
         
