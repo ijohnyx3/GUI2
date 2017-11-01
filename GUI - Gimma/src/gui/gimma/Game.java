@@ -165,40 +165,7 @@ public class Game {
         //Section starting the code for the prologue of the story 
         panel.add(prologue, "prologue");
                 
-        /*        c.gridx = 0;
-                c.gridy = 0;
-                c.weighty = 0;
-                c.weightx = 0;
-                c.ipadx = 60;
-                c.ipady = 20;
-                c.insets = new Insets(600,0,0,200);        
-            prologue.add(stop, c);
-                
-            stop.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    System.exit(0);
-                    }
-            });
-                
-            
-                c.gridx = 0;
-                c.gridy = 0;
-                c.weightx = 0;
-                c.weighty = 0;
-                c.ipadx = 60;
-                c.ipady = 20;
-                c.insets = new Insets(600,100,0,0);             
-            prologue.add(reset, c);
-                
-            reset.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    
-                    }
-            });
-                
-                */
+        
         
         //Scrollpane with text
                 c.gridx = 0;
@@ -291,23 +258,7 @@ public class Game {
             first.add(statscroll, c);
                 statscroll.setViewportView(stats);
                 
-                stats.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                stats.setEditable(false);
-                stats.setEnabled(true);
-                stats.setWrapStyleWord(true);
-                stats.setLineWrap(true);
-                stats.setText(  "Stats: \n"
-                        +       " Sta:  lvl 1 \n"
-                        +       " Str:  lvl 1 \n"
-                        +       " Int:  lvl 1 \n"
-                        +       " Agi:  lvl 1 \n"
-                        +       " Luk:  lvl 1 \n"
-                        +       "     \n\n"
-                        +       "Items: \n"
-                        +       " Niggys magic flute\n\n");
+                setText(stats, border);
 
                         
         //Family button
@@ -494,23 +445,7 @@ public class Game {
             Villagers.add(statscroll3, c);
                 statscroll3.setViewportView(stats3);
                 
-                stats3.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                stats3.setEditable(false);
-                stats3.setEnabled(true);
-                stats3.setWrapStyleWord(true);
-                stats3.setLineWrap(true);
-                stats3.setText(  "Stats: \n"
-                        +       " Sta:  lvl 1 \n"
-                        +       " Str:  lvl 1 \n"
-                        +       " Int:  lvl 1 \n"
-                        +       " Agi:  lvl 1 \n"
-                        +       " Luk:  lvl 1 \n"
-                        +       "     \n\n"
-                        +       "Items: \n"
-                        +       " Niggys magic flute\n\n");
+                setText(stats3, border);
 
                 
         //Button to continue to the next part with the choice Villagers        
@@ -570,23 +505,7 @@ public class Game {
             Guards.add(statscroll4, c);
                 statscroll4.setViewportView(stats4);
                 
-                stats4.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                stats4.setEditable(false);
-                stats4.setEnabled(true);
-                stats4.setWrapStyleWord(true);
-                stats4.setLineWrap(true);
-                stats4.setText(  "Stats: \n"
-                        +       " Sta:  lvl 1 \n"
-                        +       " Str:  lvl 1 \n"
-                        +       " Int:  lvl 1 \n"
-                        +       " Agi:  lvl 1 \n"
-                        +       " Luk:  lvl 1 \n"
-                        +       "     \n\n"
-                        +       "Items: \n"
-                        +       " Niggys magic flute\n\n");
+                setText(stats4, border);
 
                 
         //Button to continue to the next part with the choice Guards        
@@ -646,23 +565,7 @@ public class Game {
             Nobody.add(statscroll5, c);
                 statscroll5.setViewportView(stats5);
                 
-                stats5.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                stats5.setEditable(false);
-                stats5.setEnabled(true);
-                stats5.setWrapStyleWord(true);
-                stats5.setLineWrap(true);
-                stats5.setText(  "Stats: \n"
-                        +       " Sta:  lvl 1 \n"
-                        +       " Str:  lvl 1 \n"
-                        +       " Int:  lvl 1 \n"
-                        +       " Agi:  lvl 1 \n"
-                        +       " Luk:  lvl 1 \n"
-                        +       "     \n\n"
-                        +       "Items: \n"
-                        +       " Niggys magic flute\n\n");
+                setText(stats5, border);
 
                 
         //Button to continue to the next part with the choice Nobody
@@ -836,23 +739,7 @@ public class Game {
             third.add(statscroll7, c);
                 statscroll7.setViewportView(stats7);
                 
-                stats7.setBorder(
-                        BorderFactory.createCompoundBorder(
-                            border,
-                            BorderFactory.createEmptyBorder(5,5,5,5)));
-                stats7.setEditable(false);
-                stats7.setEnabled(true);
-                stats7.setWrapStyleWord(true);
-                stats7.setLineWrap(true);
-                stats7.setText(  "Stats: \n"
-                        +       " Sta:  lvl 1 \n"
-                        +       " Str:  lvl 1 \n"
-                        +       " Int:  lvl 1 \n"
-                        +       " Agi:  lvl 1 \n"
-                        +       " Luk:  lvl 1 \n"
-                        +       "     \n\n"
-                        +       "Items: \n"
-                        +       " Niggys magic flute\n\n");
+                setText(stats7, border);
                 
                 
                 //choice 2     
@@ -892,15 +779,21 @@ public class Game {
             fourth.add(statscroll8, c);
                 statscroll8.setViewportView(stats8);
                 
-                stats8.setBorder(
+                setText(stats8, border);
+                
+
+    }
+    
+    public void setText(JTextArea stat,Border border){
+        stat.setBorder(
                         BorderFactory.createCompoundBorder(
                             border,
                             BorderFactory.createEmptyBorder(5,5,5,5)));
-                stats8.setEditable(false);
-                stats8.setEnabled(true);
-                stats8.setWrapStyleWord(true);
-                stats8.setLineWrap(true);
-                stats8.setText(  "Stats: \n"
+                stat.setEditable(false);
+                stat.setEnabled(true);
+                stat.setWrapStyleWord(true);
+                stat.setLineWrap(true);
+                stat.setText(  "Stats: \n"
                         +       " Sta:  lvl 1 \n"
                         +       " Str:  lvl 1 \n"
                         +       " Int:  lvl 1 \n"
@@ -909,11 +802,7 @@ public class Game {
                         +       "     \n\n"
                         +       "Items: \n"
                         +       " Niggys magic flute\n\n");
-                
-
     }
-    
-    
     
     
     public static void main(String[] args) {
