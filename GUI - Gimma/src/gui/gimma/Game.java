@@ -126,6 +126,8 @@ public class Game {
         
         
         
+        
+        
         //Section starting the code for the intro screen
         panel.add(intro, "intro");
             
@@ -161,44 +163,13 @@ public class Game {
                 }
             });
 
-        
+            
+            
+            
+            
         //Section starting the code for the prologue of the story 
         panel.add(prologue, "prologue");
-                
-        /*        c.gridx = 0;
-                c.gridy = 0;
-                c.weighty = 0;
-                c.weightx = 0;
-                c.ipadx = 60;
-                c.ipady = 20;
-                c.insets = new Insets(600,0,0,200);        
-            prologue.add(stop, c);
-                
-            stop.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    System.exit(0);
-                    }
-            });
-                
-            
-                c.gridx = 0;
-                c.gridy = 0;
-                c.weightx = 0;
-                c.weighty = 0;
-                c.ipadx = 60;
-                c.ipady = 20;
-                c.insets = new Insets(600,100,0,0);             
-            prologue.add(reset, c);
-                
-            reset.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    
-                    }
-            });
-                
-                */
+
         
         //Scrollpane with text
                 c.gridx = 0;
@@ -307,7 +278,7 @@ public class Game {
                         +       " Luk:  lvl 1 \n"
                         +       "     \n\n"
                         +       "Items: \n"
-                        +       " Niggys magic flute\n\n");
+                        +       " None");
 
                         
         //Family button
@@ -331,7 +302,7 @@ public class Game {
                         text3.append(text2.getText()); 
                         cl.show(panel, "Family");
                         
-                        JOptionPane.showMessageDialog(null, "Your Int has increased by 1 lvl!", "stat-up!", JOptionPane.INFORMATION_MESSAGE);
+                        //JOptionPane.showMessageDialog(null, "Your Int has increased by 1 lvl!", "stat-up!", JOptionPane.INFORMATION_MESSAGE);
                     }
             });
             
@@ -434,7 +405,7 @@ public class Game {
                         +       " Luk:  lvl 1 \n"
                         +       "     \n\n"
                         +       "Items: \n"
-                        +       " Niggys magic flute\n\n");
+                        +       " None");
 
                 
         //Button to continue to the next part with the choice Family        
@@ -510,7 +481,7 @@ public class Game {
                         +       " Luk:  lvl 1 \n"
                         +       "     \n\n"
                         +       "Items: \n"
-                        +       " Niggys magic flute\n\n");
+                        +       " None\n\n");
 
                 
         //Button to continue to the next part with the choice Villagers        
@@ -586,7 +557,7 @@ public class Game {
                         +       " Luk:  lvl 1 \n"
                         +       "     \n\n"
                         +       "Items: \n"
-                        +       " Niggys magic flute\n\n");
+                        +       " None\n\n");
 
                 
         //Button to continue to the next part with the choice Guards        
@@ -662,7 +633,7 @@ public class Game {
                         +       " Luk:  lvl 1 \n"
                         +       "     \n\n"
                         +       "Items: \n"
-                        +       " Niggys magic flute\n\n");
+                        +       " None\n\n");
 
                 
         //Button to continue to the next part with the choice Nobody
@@ -743,7 +714,19 @@ public class Game {
             serious.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                       
+                            text7.append(
+                                "\n\nHow dare you to speak to me like that! I will burn your whole village and everything that you love you insolent little piece of sh*t!\n" 
+                                + "The flames in the dark space rise high and from behind you a fire whip strikes your back as it heavily burns it. “All of you will pay for"
+                                + "what you’ve done to me, you will all tremble with fear when you see what happens soon!\n You wake up in the alley, your back hurts like crazy"
+                                + "and you feel the burn wound is still there.\n You think this is the proof you need to get the higher ups to believe you! You quickly head to the"
+                                + "village head and as you come into the room where some of the leaders are talking you scream: “Bloodworth is coming here anytime, and if you think"
+                                + "I’m crazy here is the proof!” You take off your shirt and show the burn mark. “And I’m going to stop him!”\n You see the village head whisper in "
+                                + "someone’s ear and he leaves the room. They ask you to explain it all and you do. They gather the troops and give you some as bodyguards. “We will "
+                                + "clear the festival area quickly before he’s here!” said the troop commander.\n You all make haste to the festival area and as soon as you arrive and"
+                                + " tell everyone to go into their homes for now a big flame portal opens on the stage and people scream and run in fear of this dark energy. A large "
+                                + "Pig-man in dark steel armor and a big Warhammer steps out, followed by some mean looking Hell-Pigs. He screams: “WHERE IS THAT OLD GEEZER, I WILL HAVE HIS HEAD TONIGHT!!!"
+                            );
+                            text8.append(text7.getText());
                         cl.show(panel, "third");
                     }
             });
@@ -759,7 +742,19 @@ public class Game {
             grudge.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                       
+                        text7.append(
+                            "\n\nHow dare you to speak to me like that! I will burn your whole village and everything that you love you insolent little piece of sh*t!\n" 
+                            + "The flames in the dark space rise high and from behind you a fire whip strikes your back as it heavily burns it. “All of you will pay for"
+                            + "what you’ve done to me, you will all tremble with fear when you see what happens soon!\n You wake up in the alley, your back hurts like crazy"
+                            + "and you feel the burn wound is still there.\n You think this is the proof you need to get the higher ups to believe you! You quickly head to the"
+                            + "village head and as you come into the room where some of the leaders are talking you scream: “Bloodworth is coming here anytime, and if you think"
+                            + "I’m crazy here is the proof!” You take off your shirt and show the burn mark. “And I’m going to stop him!”\n You see the village head whisper in "
+                            + "someone’s ear and he leaves the room. They ask you to explain it all and you do. They gather the troops and give you some as bodyguards. “We will "
+                            + "clear the festival area quickly before he’s here!” said the troop commander.\n You all make haste to the festival area and as soon as you arrive and"
+                            + " tell everyone to go into their homes for now a big flame portal opens on the stage and people scream and run in fear of this dark energy. A large "
+                            + "Pig-man in dark steel armor and a big Warhammer steps out, followed by some mean looking Hell-Pigs. He screams: “WHERE IS THAT OLD GEEZER, I WILL HAVE HIS HEAD TONIGHT!!!");
+                    
+                        text9.append(text7.getText());
                         cl.show(panel, "fourth");
                     }
             });
@@ -775,7 +770,19 @@ public class Game {
             mercy.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                       
+                        text7.append(
+                            "\n\nHow dare you to speak to me like that! I will burn your whole village and everything that you love you insolent little piece of sh*t!\n" 
+                            + "The flames in the dark space rise high and from behind you a fire whip strikes your back as it heavily burns it. “All of you will pay for"
+                            + "what you’ve done to me, you will all tremble with fear when you see what happens soon!\n You wake up in the alley, your back hurts like crazy"
+                            + "and you feel the burn wound is still there.\n You think this is the proof you need to get the higher ups to believe you! You quickly head to the"
+                            + "village head and as you come into the room where some of the leaders are talking you scream: “Bloodworth is coming here anytime, and if you think"
+                            + "I’m crazy here is the proof!” You take off your shirt and show the burn mark. “And I’m going to stop him!”\n You see the village head whisper in "
+                            + "someone’s ear and he leaves the room. They ask you to explain it all and you do. They gather the troops and give you some as bodyguards. “We will "
+                            + "clear the festival area quickly before he’s here!” said the troop commander.\n You all make haste to the festival area and as soon as you arrive and"
+                            + " tell everyone to go into their homes for now a big flame portal opens on the stage and people scream and run in fear of this dark energy. A large "
+                            + "Pig-man in dark steel armor and a big Warhammer steps out, followed by some mean looking Hell-Pigs. He screams: “WHERE IS THAT OLD GEEZER, I WILL HAVE HIS HEAD TONIGHT!!!");
+                    
+                        text9.append(text7.getText());
                         cl.show(panel, "fourth");
                     }
             });
@@ -791,7 +798,19 @@ public class Game {
             stoopid.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                       
+                        text7.append(
+                                "\n\nHow dare you to speak to me like that! I will burn your whole village and everything that you love you insolent little piece of sh*t!\n" 
+                                + "The flames in the dark space rise high and from behind you a fire whip strikes your back as it heavily burns it. “All of you will pay for"
+                                + "what you’ve done to me, you will all tremble with fear when you see what happens soon!\n You wake up in the alley, your back hurts like crazy"
+                                + "and you feel the burn wound is still there.\n You think this is the proof you need to get the higher ups to believe you! You quickly head to the"
+                                + "village head and as you come into the room where some of the leaders are talking you scream: “Bloodworth is coming here anytime, and if you think"
+                                + "I’m crazy here is the proof!” You take off your shirt and show the burn mark. “And I’m going to stop him!”\n You see the village head whisper in "
+                                + "someone’s ear and he leaves the room. They ask you to explain it all and you do. They gather the troops and give you some as bodyguards. “We will "
+                                + "clear the festival area quickly before he’s here!” said the troop commander.\n You all make haste to the festival area and as soon as you arrive and"
+                                + " tell everyone to go into their homes for now a big flame portal opens on the stage and people scream and run in fear of this dark energy. A large "
+                                + "Pig-man in dark steel armor and a big Warhammer steps out, followed by some mean looking Hell-Pigs. He screams: “WHERE IS THAT OLD GEEZER, I WILL HAVE HIS HEAD TONIGHT!!!");
+                    
+                        text8.append(text7.getText());
                         cl.show(panel, "third");
                     }
             });
@@ -818,16 +837,7 @@ public class Game {
                 text8.setEnabled(true);
                 text8.setWrapStyleWord(true);
                 text8.setLineWrap(true);
-                text8.setText("How dare you to speak to me like that! I will burn your whole village and everything that you love you insolent little piece of sh*t!\n" +
-"\n" +
-"The flames in the dark space rise high and from behind you a fire whip strikes your back as it heavily burns it. “All of you will pay for what you’ve done to me, you will all tremble with fear when you see what happens soon!\n" +
-"\n" +
-"You wake up in the alley, your back hurts like crazy and you feel the burn wound is still there.\n" +
-"You think this is the proof you need to get the higher ups to believe you! You quickly head to the village head and as you come into the room where some of the leaders are talking you scream: “Bloodworth is coming here anytime, and if you think I’m crazy here is the proof!” You take off your shirt and show the burn mark. “And I’m going to stop him!”\n" +
-"\n" +
-"You see the village head whisper in someone’s ear and he leaves the room. They ask you to explain it all and you do. They gather the troops and give you some as bodyguards. “We will clear the festival area quickly before he’s here!” said the troop commander.\n" +
-"\n" +
-"You all make haste to the festival area and as soon as you arrive and tell everyone to go into their homes for now a big flame portal opens on the stage and people scream and run in fear of this dark energy. A large Pig-man in dark steel armor and a big Warhammer steps out, followed by some mean looking Hell-Pigs. He screams: “WHERE IS THAT OLD GEEZER, I WILL HAVE HIS HEAD TONIGHT!!!");
+                
                 
         //Scrollpane7 of the stats with updated stats displayed
                 c.ipadx = 150;
@@ -852,7 +862,7 @@ public class Game {
                         +       " Luk:  lvl 1 \n"
                         +       "     \n\n"
                         +       "Items: \n"
-                        +       " Niggys magic flute\n\n");
+                        +       " None\n\n");
                 
                 
                 //choice 2     
@@ -873,17 +883,7 @@ public class Game {
                 text9.setEnabled(true);
                 text9.setWrapStyleWord(true);
                 text9.setLineWrap(true);
-                text9.setText("How dare you to speak to me like that! I will burn your whole village and everything that you love you insolent little piece of sh*t!\n" +
-"\n" +
-"The flames in the dark space rise high and from behind you a fire whip strikes your back as it heavily burns it. “All of you will pay for what you’ve done to me, you will all tremble with fear when you see what happens soon!\n" +
-"\n" +
-"You wake up in the alley, your back hurts like crazy and you feel the burn wound is still there.\n" +
-"You think this is the proof you need to get the higher ups to believe you! You quickly head to the village head and as you come into the room where some of the leaders are talking you scream: “Bloodworth is coming here anytime, and if you think I’m crazy here is the proof!” You take off your shirt and show the burn mark. “And I’m going to stop him!”\n" +
-"\n" +
-"You see the village head whisper in someone’s ear and he leaves the room. They ask you to explain it all and you do. They gather the troops and give you some as bodyguards. “We will clear the festival area quickly before he’s here!” said the troop commander.\n" +
-"\n" +
-"You all make haste to the festival area and as soon as you arrive and tell everyone to go into their homes for now a big flame portal opens on the stage and people scream and run in fear of this dark energy. A large Pig-man in dark steel armor and a big Warhammer steps out, followed by some mean looking Hell-Pigs. He screams: “WHERE IS THAT OLD GEEZER, I WILL HAVE HIS HEAD TONIGHT!");
-                
+
                 
         //Scrollpane3 of the stats with updated stats displayed
                 c.ipadx = 150;
@@ -908,7 +908,7 @@ public class Game {
                         +       " Luk:  lvl 1 \n"
                         +       "     \n\n"
                         +       "Items: \n"
-                        +       " Niggys magic flute\n\n");
+                        +       " Nonee\n\n");
                 
 
     }
