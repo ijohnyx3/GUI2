@@ -302,7 +302,7 @@ public class Game {
                         text3.append(text2.getText()); 
                         cl.show(panel, "Family");
                         
-                        //JOptionPane.showMessageDialog(null, "Your Int has increased by 1 lvl!", "stat-up!", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Your Int has increased by 1 lvl!", "stat-up!", JOptionPane.INFORMATION_MESSAGE);
                     }
             });
             
